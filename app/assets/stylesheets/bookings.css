@@ -1,0 +1,69 @@
+/*.bookings-div{
+  background-color: #7C2251; for compatibility with older browsers
+	background-image: linear-gradient(#7C2251,transparent);
+}*/
+
+
+.bookings-div form input{
+	height: 20px;
+	width: 180px;
+}
+.bookings-div form label{
+	width: 100px;
+	padding: 10px;
+}
+.bookings-div form input[type="submit"]{
+	width: 150px;
+  height: 30px;
+}
+.disable-status{
+	background: #D7D6E5 !important;
+}
+
+/*.user-bookings:hover{
+  transform: scale(1.5);
+  font-size: 14px;
+}*/
+
+.show-booking{
+	width: 50%;
+	margin:0 auto;
+}
+.show-booking p{
+	display: inline-block;
+	width: 100px;
+	margin: 0;
+}
+
+.tabs{
+	width: 50%;
+	margin: 0 auto;
+}
+.bookings-div .tabs ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.bookings-div .tabs ul li{
+	display: inline-block;
+	height: 100%;
+	background: #455962;
+	border-radius: 0 10px 0 0;
+	padding: 10px;
+	opacity: 0.75;
+}
+.bookings-div .tabs ul li a{
+	text-decoration: none;
+	color: #fff;
+}
+.widget-fields{
+	padding: 15px;
+}
+.widget-fields label{
+	width: 100px;
+}
+.widget-fields input[type="text"],
+.widget-fields input[type="select"]{
+	height: 20px;
+	width: 200px;
+}

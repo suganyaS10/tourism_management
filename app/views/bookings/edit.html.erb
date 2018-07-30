@@ -1,0 +1,7 @@
+<script type="text/javascript">
+	var cost_per_person = <%= @booking.tourism_package.cost_per_person %>;
+	var max_people = <%= @booking.tourism_package.max_people %>;
+	var booking = <%= raw @booking[:passenger_details].to_json %>;
+</script>
+
+<%= render 'form', booking: @booking %>

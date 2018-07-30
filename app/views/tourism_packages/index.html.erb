@@ -1,0 +1,33 @@
+<% if can? :create, TourismPackage %>
+
+  <div class="page-header">
+  	<%= link_to image_tag("add.png"), {action: 'new', controller: 'tourism_packages'}, class: 'action-icons', id: 'create-tour-package' %>
+  </div>
+
+<% else %>
+  <%= render 'search' %>  
+<% end %> 
+
+<h2 class="sec-heading">All Packages</h2>
+
+<% if @packages.present? %>
+  
+  <div class="grid-container">
+
+    <% @packages.each do |package| %>
+	    <div class="grid-item">
+	    	<p class="grid-p"><%= package.name %></p>
+	    	<p class="grid-p"><%= package.start_date %>
+	    	<%= package.end_date %></p>
+	    	<p class="grid-p"><%= package.starting_point %>
+	    	<%= package.end_point %></p>
+        <% if current_user.admin? %>
+	    	  <p class="grid-p"><%= link_to 'Edit', edit_tourism_package_path(package.id), class: 'action-icons' %><%= link_to image_tag("add.png"), package, method: :delete, data: {confirm: 'Are you sure?'}, class: 'action-icons' %></p>
+        <% else %>
+         <p class="grid-p"> <%= link_to 'Book', new_booking_path(tourism_package_id: package.id), class: 'action-icons' %></p>
+        <% end %> 
+      </div>	
+    <% end %> 
+    </div>   
+<% end %>
+

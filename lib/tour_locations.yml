@@ -1,0 +1,9 @@
+{locations: [{start_point: 'Chennai', end_point: 'Mumbai', intermediate_points: 
+	['Pune', 'Surat']},
+	{start_point: 'Chennai', end_point: 'Bangalore', intermediate_points: 
+	['Hosur', 'Mysore']},
+	{start_point: 'Chennai', end_point: 'Delhi', intermediate_points: 
+	['Rajasthan', 'Surat']},
+	{start_point: 'Rajasthan', end_point: 'Darjeling', intermediate_points: 
+	['Delhi', 'Redfort']}],
+}

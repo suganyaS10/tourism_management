@@ -1,0 +1,43 @@
+<script type="text/javascript">
+	var booking_status = '<%= @booking.status %>';
+	var booking = ''
+</script>
+
+<div class="show-booking">
+	<div class="field">
+		<p>Package</p>
+		<%= @booking.tourism_package.name %>
+	</div>
+
+	<div class="field">
+		<p>Start Date</p>
+		<%= @booking.tourism_package.start_date %>
+	</div>
+
+	<div class="field">
+		<p>Number of People</p>
+		<%= @booking.people_count %>
+	</div>
+
+	<div class="field">
+		<p>Status</p>
+		<%= @booking.status %>
+	</div>
+
+	<div class="field">
+		<p>Passengers Details</p>
+		<textarea><%= @booking.passenger_details.to_json %></textarea>
+	</div>
+
+	<div class="field">
+		<% if current_user.admin? %>
+			<p class= 'link-btn approve', id= 'approve-booking', data-package-id="<%= @booking.tourism_package.id %>">Approve</p>
+			<p class= 'link-btn decline', id= 'decline-booking', data-package-id="<%= @booking.tourism_package.id %>">Decline</p>
+
+		<% else %>
+		  <%= @booking.status %>
+		<% end %>	
+	</div>
+
+	<%= link_to 'Back to All Packages', root_path, class: 'link-btn' %>
+</div>

@@ -1,0 +1,53 @@
+<div class="user-session-backdrop"></div>
+
+<div class="user-session-layout right" style="margin-top: -500px !important;">
+
+  <h2 class="sec-heading" style="margin-bottom: 0px;">Sign up</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :date_of_birth %>
+      <%= f.date_field :date_of_birth %>
+    </div>
+
+    <div class="field">
+      <%= f.label :age %>
+      <%= f.text_field :age %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :role_id %>
+      <%= f.select :role_id, Role.all.collect {|role| [role.name, role.id]} %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'action-btn' %>
+    </div>
+  <% end %>
+
+<div class="devise-link-btn-div right">
+  <%= render "devise/shared/links" %>
+</div>
+</div>

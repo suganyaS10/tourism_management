@@ -1,0 +1,62 @@
+<%= form_with(model: tourism_package, local: true) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+
+   <div class="field">
+    <%= f.label :starting_point %>
+    <%= f.select :starting_point, @start_points %>
+  </div>
+
+   <div class="field">
+    <%= f.label :end_point %>
+    <%= f.select :end_point, @end_points %>
+  </div>
+
+   <div class="field">
+    <%= f.label :intermediate_points %>
+    <%= f.select :intermediate_points, @intermediate_points, {}, {multiple: true} %>
+  </div>
+
+   <div class="field">
+    <%= f.label :min_age %>
+    <%= f.text_field :min_age %>
+  </div>
+
+   <div class="field">
+    <%= f.label :max_age %>
+    <%= f.text_field :max_age %>
+  </div>
+
+   <div class="field">
+    <%= f.label :max_people %>
+    <%= f.text_field :max_people %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cost_per_person %>
+    <%= f.text_field :cost_per_person %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_date %>
+    <%= f.date_field :last_date %>
+  </div>
+
+  <div class="field">
+  	<%= f.submit 'Submit', class: 'action-btn' %>
+  </div>
+  
+<% end %>

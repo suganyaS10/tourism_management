@@ -1,0 +1,6 @@
+  
+  <%= render partial: 'tourism_packages/search', locals: {start_point: @start_points, end_point: @end_points } %>  
+
+  <div id="search-result">
+  	<%= render partial: 'tourism_packages/search-result', locals: {packages: @packages} %>
+  </div>

@@ -1,0 +1,51 @@
+<% if can? :create, TourismPackage %>
+
+  <div class="page-header">
+    <%= link_to image_tag("add.png"), {action: 'new', controller: 'tourism_packages'}, :data => { colorbox_static: true,  colorbox_tourism_package: true, :colorbox_height => '700px', :colorbox_width => '700px' }, class: 'action-icons', id: 'create-tour-package' %>
+  </div>
+<% end %>  
+
+<h2 class="sec-heading">All Packages</h2>
+
+<% if packages.present? %>
+  
+<div class="accordion">
+<div class="accordion-section">
+<% n = 0 %>
+    <% packages.each do |package| %>
+      <fieldset>
+      <legend class="accordion-section-title" onmouseover="" style="cursor: pointer; font-weight: bolder; font-size: 15px;" href="#accordion-<%= "#{n+=1}" %>"><%= package.name %>  +</legend>
+      <div id="accordion-<%=n%>" class="accordion-section-content">
+        <p class="grid-title"><%= package.name %>
+          <% if current_user && current_user.admin? %>
+            <%= link_to 'Edit', edit_tourism_package_path(package.id), :data => { colorbox_static: true,  colorbox_tourism_package: true, :colorbox_height => '700px', :colorbox_width => '700px' },class: 'action-icons' %><%= button_to 'Delete', tourism_package_path(package), method: :delete, data: {confirm: 'Are you sure?'}, class: 'action-icons' %>
+          <% end %>  
+        </p>      
+        
+        <div>
+          <p class="grid-p">From: <%= package.starting_point %></p>
+          <p class="grid-p">trip Start Date: <%= package.start_date.to_date %></p>
+        </div>
+
+        <div>
+           <p class="grid-p">Destination: <%= package.end_point %></p>
+           <p class="grid-p">Trip end date: <%= package.end_date.to_date %></p>
+        </div>
+
+        <div>
+          <p class="grid-p">Seats Remaining: <%= package.remaining_seats %></p>
+        </div>
+        
+        <% if package.remaining_seats != 0 %>
+          <p class="grid-booking-p"> <%= link_to 'Book', new_booking_path(tourism_package_id: package.id), class: 'grid-booking' %></p> 
+        <% else %>
+          <p class="grid-booking-p"><span class="grid-booking bg-red right">No Seats Available</span></p>
+        <% end %>
+      </div>
+
+      </fieldset>  
+    <% end %> 
+</div>  
+</div> 
+<% end %>
+

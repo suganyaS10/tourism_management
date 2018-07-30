@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TourismManagement</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    
+  	<header class="zero-margin">
+  		<div class="left left-header">
+        <nav class="horizontal-nav">
+          <ul class="horizontal-nav-ul zero-margin">
+            <li class="logo"><%= image_tag('logo.png') %></li>
+          </ul>
+        </nav>
+      </div>
+
+  		<div class="right right-header">
+        <ul class="header-right-ul zero-margin">
+          <% if current_user %>
+            <li class="header-right-li pointer-cursor" style="cursor: default"><%= current_user.name %></li>
+            <li class="header-right-li">
+              <a href="#">
+                <span class="nav-text">My Profile</span>
+              </a>
+            </li>
+
+            <% if current_user && current_user.admin? %>
+              <li class="header-right-li">
+                <a href="<%= my_bookings_path %>">
+                  <span class="nav-text">All Bookings</span>
+                </a>
+              </li> 
+            <% else %>
+              <li class="header-right-li">
+                <a href="<%= my_bookings_path %>">
+                  <span class="nav-text">My Bookings</span>
+                </a>
+              </li>
+            <% end %>
+
+            <li class="header-right-li pointer-cursor"><%= link_to 'Log Out',destroy_user_session_path, :method => :delete %></li>
+
+          <% else %>
+            <li class="header-right-li">
+              <a href="<%= new_user_registration_path %>">
+                <span class="nav-text">Sign Up</span>
+              </a>
+            </li>
+
+            <li class="header-right-li">
+              <a href="<%= new_user_session_path %>">
+                <span class="nav-text">Log In</span>
+              </a>
+            </li>
+
+          <% end %>
+          <li>
+        </ul>
+  		</div>
+  	</header>
+
+  	<div class="content">
+
+      <% if flash[:error] %>
+        <div class="notification is-primary global-notification close-soon">
+          <p class="notice"><%= flash[:error] %></p>
+        </div>
+      <% end %>
+
+      <% if flash[:success] %>
+        <div class="success close-soon">
+          <p class="success-notice"><%= flash[:success] %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <div class="holidays-slider">
+      <p class="slider-head">Perfect Holidays</p>
+
+      <ul class="slider-ul">
+        <li><a href="#"><%= image_tag('slider_img1.jpg', style: "height: 200px;width:150px") %><span class="slider-text">Desert</span></a></li>
+        <li><a href="#"><%= image_tag('slider-img-2.jpg', style: "height: 200px;width:150px") %><span class="slider-text">Weekend</span></a></li>
+        <li><a href="#"><%= image_tag('slider-img-3.jpg', style: "height: 200px;width:150px") %><span class="slider-text">HoneyMoon</span></a></li>
+        <li><a href="#"><%= image_tag('slider-img-4.jpg', style: "height: 200px;width:150px") %><span class="slider-text">Holiday</span></a></li>
+      </ul>
+    </div>
+   
+
+
+    <footer>
+      
+      <div class="left-footer left">
+        <div class="footer-sub">
+          <p class="footer-sec-head">Product Offering</p>
+          Holidays in India, International holidays, Train Bookings, Flight Bookings,
+          hotel bookings, Mobile apps. And we constantly look forward to be at your service
+        </div>
+
+        <div class="footer-sub">
+          <p class="footer-sec-head">Product Offering</p>
+          Holidays in India, International holidays, Train Bookings, Flight Bookings,
+          hotel bookings, Mobile apps. And we constantly look forward to be at your service
+        </div>
+      </div>
+      
+      <div class="right-footer right">
+        <div class="footer-sub">
+          <p class="footer-sec-head">Product Offering</p>
+          Holidays in India, International holidays, Train Bookings, Flight Bookings,
+          hotel bookings, Mobile apps. And we constantly look forward to be at your service
+        </div>
+
+        <div class="footer-sub ">
+          <p class="footer-sec-head">Product Offering</p>
+          Holidays in India, International holidays, Train Bookings, Flight Bookings,
+          hotel bookings, Mobile apps. And we constantly look forward to be at your service
+        </div>
+      </div>
+
+      <div class="social-media">
+        <ul class="social-media-ul zero-margin">
+          <li class="footer-sm">Facebook</li>
+          <li class="footer-sm">Twitter</li>
+          <li class="footer-sm">Google+</li>
+        </ul>
+      </div>
+    </footer>
+
+
+    
+  </body>
+</html>

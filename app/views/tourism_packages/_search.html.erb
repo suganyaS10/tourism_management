@@ -1,0 +1,26 @@
+<div class="search-form-div">
+
+	<div class="search-form right">
+		<%= form_for :anything, url: "tourism_packages/search", remote: true, html: { id: 'search-form' } do |form| %>
+		  <div class="search-fields">
+		  	<%= form.label 'From' %>
+		  	<%= form.select :starting_point, start_point, include_blank: true %>
+		  </div>
+
+		  <div class="search-fields">
+		  	<%= form.label 'To' %>
+		  	<%= form.select :end_point, end_point, include_blank: true %>
+		  </div>
+
+		  <div class="search-fields">
+		  	<%= form.label 'Start Date' %>
+		  	<%= form.date_field :start_date %>
+		  </div>
+
+		  <div>
+		  	<%= form.submit 'Search', class: 'action-btn', id: 'search-btn', remote: true %>
+		  </div>
+		<% end  %>
+
+	</div>
+</div>

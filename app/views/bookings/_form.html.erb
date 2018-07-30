@@ -1,0 +1,76 @@
+<div class="bookings-div">
+  <div class='tabs' style='width:50%'>
+  <ul>
+    <li id="basic-li"><a data-target="basic_information" href='#basic_information'>Basic</a>
+    </li></l><li  data-target="master_passenger" id="master-passenger-li"><a href='#master_passenger'>Master Passenger</a>
+    </li><li id="other-passenger-li"><a href='#all-passengers'>Other Passengers</a>
+    </li><li id="confirm-li"><a href='#display_for_confirmation'>Confirmation</a></li>
+
+  </ul>
+  <%= form_with(model: booking, local: true) do |f| %>
+    
+    <div id="basic_information" class="tab">
+
+      <%= f.hidden_field :user_id, value: current_user.id %><br />
+
+      <%= f.hidden_field :tourism_package_id, value: @tourism_package.id %><br />
+      
+      <%= f.label 'Package Name' %>
+      <%= f.text_field :tourism_package_name, value: @tourism_package.name, id: 'booking_name' %><br />
+    
+      <%= f.label 'Trip Start Date' %>
+      <%= f.text_field :start_date, value: @tourism_package.start_date.to_date, id: 'booking_start_date' %><br />
+    </div>
+
+    <%= f.fields_for :passenger_details, @booking[:passenger_details] do |ff| %>
+
+
+      <%= ff.fields_for :master_passenger, @booking.try(:passenger_details).try(:master_passenger) do |fff| %>
+        <div id="master_passenger" class="tab">
+            <%= fff.label :name %>
+            <%= fff.text_field :name %><br />
+
+            <%= fff.label :age %>
+            <%= fff.select :age, options_for_select(1..70) %><br />
+
+            <%= fff.label :mobile %>
+            <%= fff.text_field :mobile %><br />
+
+            <%= fff.label :address %>
+            <%= fff.text_field :address %><br />
+
+            <%= fff.label :num_of_people %>
+            <%= fff.text_field :num_of_people, id: 'num_of_people' %><br />
+        </div>
+      <% end %>  
+      
+      <div id="all-passengers" class="tab">
+        <div class="all-passengers" style="display: none;">
+          <%= ff.fields_for :other_passengers, @booking.try(:passenger_details).try(:other_passengers), html: {class: "all-passengers-form"} do |fff| %>
+              <%= fff.label :name %>
+              <%= fff.text_field :name %><br />
+
+              <%= fff.label :age %>
+              <%= fff.select :age, options_for_select(1..70) %><br />
+
+              <%= fff.label :gender %>
+              <%= fff.select :gender, ['Male', 'Female', 'Others'] %><br />
+          <% end %> 
+        </div>
+      </div>
+
+    <% end %>
+
+    <div id="display_for_confirmation" class="tab">
+     
+     <span id="total_cost"></span>
+     <span id='remaining-people'></span>
+    </div>
+
+    <%= f.submit 'Confirm Booking', id: 'confirm-booking', class: 'action-btn' %> 
+  <% end %>
+  </div>
+
+
+</div>
+

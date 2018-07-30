@@ -1,0 +1,2 @@
+module TourismPackagesHelper
+end

@@ -1,0 +1,8 @@
+
+<script type="text/javascript">
+	var cost_per_person = <%= @tourism_package.cost_per_person %>;
+	var max_people = <%= @tourism_package.max_people %>;
+	var booking = ''
+</script>
+
+<%= render 'form', booking: @booking %>
