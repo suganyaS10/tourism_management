@@ -25,7 +25,7 @@ class TourismPackagesController < ApplicationController
 		@package.creator = current_user
 
 		if @package.save
-			redirect_to tourism_packages_path
+			redirect_to root_path
 		else
 			flash[:error] = @package.errors.messages
 			redirect_to new_tourism_package_path
@@ -49,7 +49,7 @@ class TourismPackagesController < ApplicationController
 		@package = TourismPackage.find(params[:id])
 
 		if @package.update_attributes(@tourism_package_params)
-			redirect_to tourism_packagess_path
+			redirect_to root_path
 		else
 			redirect_to edit_tourism_package_path(@package)
 		end
